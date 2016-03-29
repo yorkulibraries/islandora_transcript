@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Allows for viewing the TRANSCRIPT datastream of an object, if it exists, in a tab. The TRANSCRIPT datastream should be a text file, and it keep the spirit of the formatting of the TRANSCRIPT datastream on rendering.
+Allows for viewing the TRANSCRIPT datastream of an object, if it exists, in a tab. The TRANSCRIPT datastream should be a text file. The module will keep the spirit of the formatting of the TRANSCRIPT datastream on rendering.
 
 Example: https://digital.library.yorku.ca/yul-307926/letter-mrs-stepler-gordon-stepler-august-23-1916/transcript
 
