@@ -1,0 +1,7 @@
+name = Islandora Transcript
+description = "Display the TRANSCRIPT datastream in a tab, if it exists on an object."
+dependencies[] = islandora
+package = Islandora Tools
+version = 7.x-dev
+core = 7.x
+php = 5.3
