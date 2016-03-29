@@ -19,7 +19,7 @@ function islandora_transcript_view(AbstractObject $object) {
   $transcript = file_get_contents($transcript_url);
   return array(
     'transcript' => array(
-      '#markup' => $transcript,
+      '#markup' => nl2br($transcript),
     ),
   );
 }
