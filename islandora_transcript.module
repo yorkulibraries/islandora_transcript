@@ -11,7 +11,7 @@
 function islandora_transcript_menu() {
   return array(
     'islandora/object/%islandora_object/transcript' => array(
-      'title' => 'TRANSCRIPT',
+      'title' => 'Transcript',
       'type' => MENU_LOCAL_TASK,
       'page callback' => 'islandora_transcript_view',
       'page arguments' => array(2),

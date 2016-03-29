@@ -2,7 +2,6 @@
 
 /**
  * @file
- * Helper functions used by this module.
  */
 
 /**
@@ -15,4 +14,11 @@
  *   A renderable array representing the tab.
  */
 function islandora_transcript_view(AbstractObject $object) {
+  $transcript_url = url("islandora/object/{$object->id}/datastream/TRANSCRIPT/view", array('absolute' => TRUE));
+  $transcript = file_get_contents($transcript_url);
+  return array(
+    'transcript' => array(
+      '#markup' => $transcript,
+    ),
+  );
 }
