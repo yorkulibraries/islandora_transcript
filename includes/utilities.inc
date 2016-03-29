@@ -2,6 +2,7 @@
 
 /**
  * @file
+ * This file contains the functions to render the transcript tab.
  */
 
 /**

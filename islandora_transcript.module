@@ -7,7 +7,7 @@
 
 /**
  * Implements hook_menu().
-*/
+ */
 function islandora_transcript_menu() {
   return array(
     'islandora/object/%islandora_object/transcript' => array(
