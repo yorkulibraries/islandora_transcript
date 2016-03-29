@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Allows for viewing the TRANSCRIPT datastream of an object, if it exists, in a tab. The TRANSCRIPT datastream should be a text file, and it will preserve line breaks of that text file on rendering.
+Allows for viewing the TRANSCRIPT datastream of an object, if it exists, in a tab. The TRANSCRIPT datastream should be a text file, and it will formatting of that text file on rendering.
 
 Example: https://digital.library.yorku.ca/yul-307926/letter-mrs-stepler-gordon-stepler-august-23-1916/transcript
 
