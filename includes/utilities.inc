@@ -15,8 +15,7 @@
  *   A renderable array representing the tab.
  */
 function islandora_transcript_view(AbstractObject $object) {
-  $transcript_url = url("islandora/object/{$object->id}/datastream/TRANSCRIPT/view", array('absolute' => TRUE));
-  $transcript = file_get_contents($transcript_url);
+  $transcript = $object['TRANSCRIPT']->content;
   return array(
     'transcript' => array(
       '#markup' => '<pre>' . wordwrap($transcript) . '</pre>',
