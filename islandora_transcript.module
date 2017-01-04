@@ -15,13 +15,21 @@ function islandora_transcript_menu() {
       'type' => MENU_LOCAL_TASK,
       'page callback' => 'islandora_transcript_view',
       'page arguments' => array(2),
-      'access callback' => 'islandora_transcript_access_callback',
+      'access callback' => 'islandora_transcript_view_access',
+      'access arguments' => array(2),
+      'file' => 'includes/utilities.inc',
+    ),
+    'islandora/object/%islandora_object/TRANSCRIPT-edit' => array(
+      'title' => 'Edit Transcipt',
+      'type' => MENU_LOCAL_TASK,
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('islandora_transcript_edit_transcript_form', 2),
+      'access callback' => 'islandora_transcript_edit_access',
       'access arguments' => array(2),
       'file' => 'includes/utilities.inc',
     ),
   );
 }
-
 
 /**
  * Access callback.
@@ -37,6 +45,38 @@ function islandora_transcript_menu() {
  *   TRUE if the user is allowed to access the transcript interface, FALSE
  *   otherwise.
  */
-function islandora_transcript_access_callback($object) {
+function islandora_transcript_view_access($object) {
   return is_object($object) && isset($object['TRANSCRIPT']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['TRANSCRIPT']);
+}
+
+/**
+ * Access callback.
+ *
+ * Requires that the given object contains a TRANSCRIPT datastream (and to be
+ * viewable, as per the stock permissions).
+ *
+ * @param AbstractObject $object
+ *   The object to test, if NULL the given object doesn't exist or is
+ *   inaccessible.
+ *
+ * @return bool
+ *   TRUE if the user is allowed to access the transcript interface, FALSE
+ *   otherwise.
+ */
+function islandora_transcript_edit_access($object) {
+  return is_object($object) && isset($object['TRANSCRIPT']) && islandora_datastream_access(ISLANDORA_METADATA_EDIT, $object['TRANSCRIPT']);
+}
+
+/**
+ * Implements hook_islandora_edit_datastream_registry().
+ */
+function islandora_transcript_islandora_edit_datastream_registry(AbstractObject $object, AbstractDatastream $datastream) {
+  $routes = array();
+  if ($datastream->id == "TRANSCRIPT") {
+    $routes[] = array(
+      'name' => t('Edit TRANSCRIPT datastream'),
+      'url' => "islandora/object/{$object->id}/TRANSCRIPT-edit",
+    );
+    return $routes;
+  }
 }
