@@ -15,12 +15,23 @@
  *   A renderable array representing the tab.
  */
 function islandora_transcript_view(AbstractObject $object) {
-  $transcript = $object['TRANSCRIPT']->content;
-  return array(
-    'transcript' => array(
-      '#markup' => '<pre>' . wordwrap($transcript) . '</pre>',
-    ),
-  );
+  if ($object['TRANSCRIPT']->mimetype == 'application/pdf') {
+    module_load_include('inc', 'islandora', 'includes/solution_packs');
+    $viewer = islandora_get_viewer(array('dsid' => 'TRANSCRIPT'), 'islandora_pdf_viewers', $object);
+    return array(
+      'transcript' => array(
+        '#markup' => '<pre>' . $viewer ? $viewer : '' . '</pre>',
+      ),
+    );
+  }
+  else {
+    $transcript = $object['TRANSCRIPT']->content;
+    return array(
+      'transcript' => array(
+        '#markup' => '<pre>' . wordwrap($transcript) . '</pre>',
+      ),
+    );
+  }
 }
 
 /**

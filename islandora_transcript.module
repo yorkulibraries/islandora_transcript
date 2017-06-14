@@ -64,7 +64,8 @@ function islandora_transcript_view_access($object) {
  *   otherwise.
  */
 function islandora_transcript_edit_access($object) {
-  return is_object($object) && isset($object['TRANSCRIPT']) && islandora_datastream_access(ISLANDORA_METADATA_EDIT, $object['TRANSCRIPT']);
+  $is_pdf = $object['TRANSCRIPT']->mimetype == 'application/pdf';
+  return !$is_pdf && is_object($object) && isset($object['TRANSCRIPT']) && islandora_datastream_access(ISLANDORA_METADATA_EDIT, $object['TRANSCRIPT']);
 }
 
 /**
