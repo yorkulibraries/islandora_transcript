@@ -46,7 +46,10 @@ function islandora_transcript_menu() {
  *   otherwise.
  */
 function islandora_transcript_view_access($object) {
-  return is_object($object) && isset($object['TRANSCRIPT']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['TRANSCRIPT']);
+  $check = is_object($object)
+           && isset($object['TRANSCRIPT'])
+           && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['TRANSCRIPT']);
+  return $check;
 }
 
 /**
@@ -64,7 +67,11 @@ function islandora_transcript_view_access($object) {
  *   otherwise.
  */
 function islandora_transcript_edit_access($object) {
-  return is_object($object) && isset($object['TRANSCRIPT']) && islandora_datastream_access(ISLANDORA_METADATA_EDIT, $object['TRANSCRIPT']);
+  $check = is_object($object)
+           && isset($object['TRANSCRIPT'])
+           && islandora_datastream_access(ISLANDORA_METADATA_EDIT, $object['TRANSCRIPT'])
+           && ($object['TRANSCRIPT']->mimetype !== 'application/pdf');
+  return $check;
 }
 
 /**
