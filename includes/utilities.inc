@@ -20,7 +20,7 @@ function islandora_transcript_view(AbstractObject $object) {
     $viewer = islandora_get_viewer(array('dsid' => 'TRANSCRIPT'), 'islandora_pdf_viewers', $object);
     return array(
       'transcript' => array(
-        '#markup' => '<pre>' . $viewer ? $viewer : '' . '</pre>',
+        '#markup' => sprintf('<pre>%s</pre>', $viewer ? $viewer : ''),
       ),
     );
   }
